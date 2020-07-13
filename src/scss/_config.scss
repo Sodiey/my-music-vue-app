@@ -1,0 +1,31 @@
+$primary: #00adb5;
+$secondary: #f8b500;
+$body-bg: #24292e;
+$text-body: #fff;
+$body-color: $text-body;
+$border-radius: 8px;
+
+//overrides
+
+$font-family-headlines: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol";
+$font-family-base: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol";
+
+$headings-font-family: $font-family-headlines;
+$headings-font-weight: 400;
+$line-height-base: 1.4;
+
+$list-group-active-bg: #222;
+$list-group-bg: transparent;
+$list-group-border-radius: 0;
+$list-group-hover-bg: #444;
+$list-group-action-color: #bbb;
+
+
+//MIXINS
+@mixin easeOut {
+  transition: all 0.5s ease-out;
+}

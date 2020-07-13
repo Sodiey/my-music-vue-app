@@ -1,10 +1,16 @@
 <template>
     <div class="songlist list-group">
     <div class="song list-group-item list-group-item-action d-flex"
+    :class="{'active': (currentSong !== null && currentSong === song) }"
     v-for="(song, i) in songs"
     :key="i"
     >
-      <font-awesome-icon class="trash mr-3 align-self-center" icon="trash" />
+      <font-awesome-icon 
+      class="trash mr-3 align-self-center" 
+      icon="trash"
+      @click="$emit('handleDelete', song)"
+
+       />
       <div class="thumbnail"
         :style="{backgroundImage: `url(${song.image})`}"
       >
