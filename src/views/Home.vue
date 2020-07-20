@@ -1,13 +1,30 @@
 <template>
-  <div>
-    HOME
-  </div>
+  <section>
+    <banner />
+    <gallery
+    :artists="artists" 
+    />
+  </section>
 </template>
 
 <script>
-  export default {
-    name: "home"
+import { mapState } from "vuex";
+import Banner from "@/components/Banner";
+import Gallery from "@/components/Gallery";
+
+export default {
+  name: "home",
+  computed: {
+    ...mapState(["artists"])
+  },
+  created() {
+    this.$store.dispatch("fetchArtists");
+  },
+  components: {
+    Banner,
+    Gallery
   }
+};
 </script>
 
 <style lang="scss" scoped>

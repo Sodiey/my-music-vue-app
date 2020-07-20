@@ -1,12 +1,22 @@
-$primary: #00adb5;
-$secondary: #f8b500;
-$body-bg: #24292e;
-$text-body: #fff;
-$body-color: $text-body;
-$border-radius: 8px;
+//My variables
+$white:      #fff;
+$black:      #000;
+$gray:       #24292e;
+$gray-dark:  #444;
+$gray-400:   #ced4da;
+$gray-500:   #adb5bd;
+$gray-600:   #929292;
+$gray-700:   #495057;
+$red:        #b50300;
+
 
 //overrides
-
+$primary: #00adb5;
+$secondary: #f8b500;
+$text-body: $black;
+$body-color: $text-body;
+// $body-bg: $gray;
+$border-radius: 8px;
 $font-family-headlines: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI",
   "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
   "Segoe UI Emoji", "Segoe UI Symbol";
@@ -18,14 +28,103 @@ $headings-font-family: $font-family-headlines;
 $headings-font-weight: 400;
 $line-height-base: 1.4;
 
-$list-group-active-bg: #222;
-$list-group-bg: transparent;
 $list-group-border-radius: 0;
-$list-group-hover-bg: #444;
-$list-group-action-color: #bbb;
+$list-group-bg: transparent;
+$list-group-active-bg: darken($primary, 10);
+$list-group-hover-bg: rgba(darken($primary, 10), .5);
 
 
 //MIXINS
 @mixin easeOut {
   transition: all 0.5s ease-out;
+}
+
+
+// Theming
+$themes: (
+  light: (
+    //HOME
+    main-body-bg: $gray-400,
+    main-body-text: $black,
+
+    
+    nav-bg: $gray,
+    btn-bg:  lighten($gray, 80),
+    btn-color: $gray,
+    
+    //MUSIC
+    song-list-bg:lighten($gray, 80),
+    song-list-text: darken($gray-400, 80),
+    song-list-sub-text: darken($gray-500, 40),
+    
+  ),
+  dark: (
+    //HOME
+    main-body-bg: $gray,
+    main-body-text: $white,
+
+    nav-bg: lighten($gray, 80),
+    
+    btn-bg: $gray,
+    btn-color: lighten($gray, 80),
+    
+    //MUSIC
+    song-list-bg: $gray,
+    song-list-text: $gray-400, 
+    song-list-sub-text: $gray-500,
+  ), 
+);
+
+
+@function map-fetch($map, $keys) {
+  $key: nth($keys, 1);
+  $length: length($keys);
+  $value: map-get($map, $key);
+
+  @if $value != null {
+    @if $length > 1 {
+      $rest: ();
+
+      @for $i from 2 through $length {
+        $rest: append($rest, nth($keys, $i));
+      }
+
+      @return map-fetch($value, $rest);
+    } @else {
+      @return $value;
+    }
+  } @else {
+    @return false;
+  }
+}
+
+@function getThemifyVariable($key) {
+  @return map-get($theme-map, $key);
+}
+
+@mixin themify($themes: $themes) {
+  @each $theme, $map in $themes {
+    .#{$theme} & {
+      // Define theme color
+      $theme-map: (
+        primary-color: #444,
+      ) !global;
+
+      @each $key, $submap in $map {
+        $value: map-fetch($themes, $theme "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+
+      @content;
+      @include easeOut;
+
+      // reset theme color to null
+      $theme-map: null !global;
+    }
+  }
 }

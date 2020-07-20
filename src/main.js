@@ -6,12 +6,10 @@ import router from "./router.js";
 import "bootstrap";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faPlay, faPause, faTrash } from "@fortawesome/free-solid-svg-icons";
-library.add(faPlay, faPause, faTrash);
+import { faPlay, faPause, faTrash, faHeart, faEye } from "@fortawesome/free-solid-svg-icons";
+library.add(faPlay, faPause, faTrash, faHeart, faEye);
 
 Vue.config.productionTip = false;
-
-console.log(router);
 
 new Vue({
   store,

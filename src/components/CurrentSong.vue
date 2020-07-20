@@ -8,7 +8,7 @@
       <div
         class="song-info d-flex justify-content-center align-items-center py-5"
       >
-        <div class="item container">
+        <div class="item container py-4">
           <div class="row justify-content-center">
             <div class="song col-md-8 text-center">
               <h1 class="song-name">{{ song.name }}</h1>
@@ -30,4 +30,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+
+</style>

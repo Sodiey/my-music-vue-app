@@ -1,3 +1,24 @@
 @import "_config";
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "_music";
+
+
+//transition
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+//BUTTON
+// .btn {
+//   @include themify() {
+//     background: getThemifyVariable("btn-bg");
+//     color: getThemifyVariable("btn-color");
+//   }
+// }

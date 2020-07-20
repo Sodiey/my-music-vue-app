@@ -53,8 +53,7 @@ export default {
         this.audioElement = null;
       });
     },
-    handleDelete: function(payload, event) {
-      alert(event);
+    handleDelete: function(payload) {
       this.$store.dispatch("deleteSong", payload);
     }
   },
