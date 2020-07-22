@@ -8,20 +8,28 @@
           </div>
         </div>
         <div class="row justify-content-center artist-outer">
-          <div class="auto col-md-6 col-lg-4 artist"
-          v-for="(artist, i) in artists"
-          :key="i"
+          <div
+            class="auto col-md-6 col-lg-4 artist"
+            v-for="(artist, i) in artists"
+            :key="i"
           >
             <div class="img-wrapper">
-              <img class="img-fluid img-logo mb-4" :src="artist.strArtistLogo" />
+              <img
+                class="img-fluid img-logo mb-4"
+                :src="artist.strArtistLogo"
+              />
             </div>
-              <p class="lead my-2">{{reduceString(artist.strBiographyEN)}}...</p>
-              <router-link class="btn btn-block btn-primary mt-4" to="/artist/bio">
-               <span
-                v-on:click="setCurrentArtist(i)"
-                class="w-100 py-2 d-block"
-               >Learn More</span>
-              </router-link>
+            <p class="lead my-2">
+              {{ reduceString(artist.strBiographyEN) }}...
+            </p>
+            <router-link
+              class="btn btn-block btn-primary mt-4"
+              to="/artist/bio"
+            >
+              <span v-on:click="setCurrentArtist(i)" class="w-100 py-2 d-block"
+                >Learn More</span
+              >
+            </router-link>
           </div>
         </div>
       </div>
@@ -30,28 +38,28 @@
 </template>
 
 <script>
-  export default {
-    name: "gallery",
-    data() {
-      return {};
-    },
-    props:["artists"],
-    methods: {
-      reduceString: function(str) {
-        let newStr = [];
-        let i;
-        for( i=0; i < str.length; i++) {
-          newStr.push(str[i]);
-            if (str[i] == '.') break;
-        }
-      return newStr.join("");
-      },
-      setCurrentArtist: function (payload) {
-         this.$store.dispatch("setCurrentArtist", payload);
-          console.log("set current artist", payload)
+export default {
+  name: "gallery",
+  data() {
+    return {};
+  },
+  props: ["artists"],
+  methods: {
+    reduceString: function(str) {
+      let newStr = [];
+      let i;
+      for (i = 0; i < str.length; i++) {
+        newStr.push(str[i]);
+        if (str[i] == ".") break;
       }
+      return newStr.join("");
+    },
+    setCurrentArtist: function(payload) {
+      this.$store.dispatch("setCurrentArtist", payload);
+      console.log("set current artist", payload);
     }
   }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -59,7 +67,7 @@
 
 .layout-inner {
   @include themify() {
-      color: getThemifyVariable("main-body-text");
+    color: getThemifyVariable("main-body-text");
   }
 }
 
@@ -88,5 +96,4 @@
 .artist-outer {
   padding: 3em;
 }
-
 </style>

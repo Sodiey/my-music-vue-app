@@ -5,13 +5,9 @@
 </template>
 
 <script>
-
-  export default {
-    name: 'footerComponent',
-
-  }
+export default {
+  name: "footerComponent"
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

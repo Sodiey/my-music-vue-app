@@ -6,13 +6,18 @@
           <div class="col-10 col-md-4 mb-3">
             <div class="card card1 mr-3">
               <div class="icon-wrapper d-flex justify-content-center mt-5 mb-4">
-                <img class="img-fluid mt-5" style="width: 130px" src="@/assets/piano.svg" />
+                <img
+                  class="img-fluid mt-5"
+                  style="width: 130px"
+                  src="@/assets/piano.svg"
+                />
               </div>
               <div class="card-body text-center">
                 <h5 class="card-title mb-3">My Artists</h5>
-                <p
-                  class="card-text mb-4"
-                >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text mb-4">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
                 <router-link to="/my-artists" class="btn btn-dark">
                   <font-awesome-icon class="play mr-2" icon="eye" />Check
                 </router-link>
@@ -22,13 +27,18 @@
           <div class="col-10 col-md-4 mb-3">
             <div class="card card2 mr-3">
               <div class="icon-wrapper d-flex justify-content-center mt-5 mb-4">
-                <img class="img-fluid mt-5" style="width: 130px" src="@/assets/jukebox.svg" />
+                <img
+                  class="img-fluid mt-5"
+                  style="width: 130px"
+                  src="@/assets/jukebox.svg"
+                />
               </div>
               <div class="card-body text-center">
                 <h5 class="card-title">My Music</h5>
-                <p
-                  class="card-text mb-4"
-                >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text mb-4">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
                 <router-link to="/music" class="btn btn-dark">
                   <font-awesome-icon class="play mr-2" icon="play" />Play
                 </router-link>
@@ -38,13 +48,18 @@
           <div class="col-10 col-md-4 mb-3">
             <div class="card card3 mr-3">
               <div class="icon-wrapper d-flex justify-content-center mt-5 mb-4">
-                <img class="img-fluid mt-5" style="width: 130px" src="@/assets/book.svg" />
+                <img
+                  class="img-fluid mt-5"
+                  style="width: 130px"
+                  src="@/assets/book.svg"
+                />
               </div>
               <div class="card-body text-center">
                 <h5 class="card-title mb-3">My Photos</h5>
-                <p
-                  class="card-text mb-4"
-                >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text mb-4">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
                 <button class="btn btn-dark">
                   <font-awesome-icon class="play mr-2" icon="eye" />Check
                 </button>

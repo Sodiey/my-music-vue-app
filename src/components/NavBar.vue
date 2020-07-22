@@ -1,49 +1,53 @@
 <template>
-    <header class="site-header">
-      <nav class="site-nav navbar navbar-expand-md fixed-top text-uppercase"
+  <header class="site-header">
+    <nav
+      class="site-nav navbar navbar-expand-md fixed-top text-uppercase"
       :class="setColorsHeader"
-      >
-        <div class="container-fluid">
-          <a class="navbar-brand">ARTSY</a>
-          <button
-            type="button"
-            class="navbar-toggler"
-            data-toggle="collapse"
-            data-target="#myTogglerNav"
-            aria-controls="#myTogglerNav"
-            aria-label="Toggle Navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <section id="myTogglerNav" class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto text-right">
-              <li class="nav-item">
-                <router-link to="/" class="nav-link">
-                  Home
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link to="/music" class="nav-link">
-                  Music
-                </router-link>
-              </li>
-              <li class="nav-item mr-md-4">
-                <router-link to="/my-artists" class="nav-link">
-                  Artists
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <button class="btn btn-small" 
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand">ARTSY</a>
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#myTogglerNav"
+          aria-controls="#myTogglerNav"
+          aria-label="Toggle Navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <section id="myTogglerNav" class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto text-right">
+            <li class="nav-item">
+              <router-link to="/" class="nav-link">
+                Home
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/music" class="nav-link">
+                Music
+              </router-link>
+            </li>
+            <li class="nav-item mr-md-4">
+              <router-link to="/my-artists" class="nav-link">
+                Artists
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <button
+                class="btn btn-small"
                 v-on:click="changeTheme"
                 :class="setColorsButton"
-                >{{theme == 'dark'? 'light':'dark'}} mode</button>
-              </li>
-            </ul>
-          </section>
-        </div>
-      </nav>
+              >
+                {{ theme == "dark" ? "light" : "dark" }} mode
+              </button>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </nav>
 
-      <!-- <section
+    <!-- <section
         class="layout-hero d-flex align-items-center text-center"
         v-if="currentSong == null"
       >
@@ -55,43 +59,42 @@
           </div>
         </div>
       </section> -->
-    </header>
+  </header>
 </template>
 
 <script>
 import { mapState } from "vuex";
 
-  export default {
-    name: "nav-bar",
-    methods: {
-      changeTheme() {
-        this.$store.dispatch("changeTheme");
-      }
+export default {
+  name: "nav-bar",
+  methods: {
+    changeTheme() {
+      this.$store.dispatch("changeTheme");
+    }
+  },
+  mounted() {
+    let nav = document.querySelector(".site-nav");
+    let navHeight = nav.clientHeight;
+    let header = document.querySelector(".site-header");
+    header.style.height = `${navHeight - 2}px`;
+  },
+  computed: {
+    ...mapState(["currentSong", "theme"]),
+    setColorsHeader: function() {
+      return {
+        "bg-color-scroll": this.currentSong,
+        "navbar-light": this.theme === "dark",
+        "navbar-dark": this.theme === "light"
+      };
     },
-    mounted() {
-     let nav = document.querySelector(".site-nav");
-     let navHeight = nav.clientHeight;
-     let header = document.querySelector(".site-header");
-     header.style.height = `${navHeight -2}px`;
-    },
-    computed: {
-      ...mapState(["currentSong", "theme"]),
-      setColorsHeader: function() {
-        return {
-          'bg-color-scroll': this.currentSong,
-          'navbar-light': this.theme === "dark",
-          'navbar-dark': this.theme === "light"
-        }
-      },
-      setColorsButton: function() {
-        return {
-        'btn-dark': this.theme === "dark",
-        'btn-light': this.theme === "light"
-        }
-      }
-    },
+    setColorsButton: function() {
+      return {
+        "btn-dark": this.theme === "dark",
+        "btn-light": this.theme === "light"
+      };
+    }
   }
-
+};
 </script>
 
 <style lang="scss" scoped>
@@ -117,7 +120,7 @@ import { mapState } from "vuex";
 }
 
 .site-header .nav-link:before {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 2px;
@@ -134,6 +137,4 @@ import { mapState } from "vuex";
   right: 0;
   transform: scaleX(1);
 }
-
-
 </style>

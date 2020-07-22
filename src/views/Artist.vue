@@ -1,5 +1,5 @@
-v <template>
-  <div id="artist-details" :class="[{'collapsed' : collapsed}]">
+<template>
+  <div id="artist-details" :class="[{ collapsed: collapsed }]">
     <div class="artist-details">
       <div class="container-sm pt-5">
         <router-view name="details" />
@@ -12,7 +12,11 @@ v <template>
         @toggle-collapse="onToggleCollapse"
         :width="width"
       />
-      <div v-if="isOnMobile && !collapsed" class="sidebar-overlay" @click="collapsed=true" />
+      <div
+        v-if="isOnMobile && !collapsed"
+        class="sidebar-overlay"
+        @click="collapsed = true"
+      />
     </div>
   </div>
 </template>
@@ -85,7 +89,7 @@ export default {
 };
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 @import "@/scss/main.scss";
 
 .v-sidebar-menu .vsm--link {
@@ -134,9 +138,8 @@ export default {
 
 //MEDIA QUERIES
 @include mediaSm {
-.artist-details {
-  padding: 0 0 0 50px;
-
-}
+  .artist-details {
+    padding: 0 0 0 50px;
+  }
 }
 </style>

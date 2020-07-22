@@ -26,10 +26,8 @@
 <script>
 export default {
   name: "current-song",
-  props: ["song"],
+  props: ["song"]
 };
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav-bar />
-    <router-view/>
+    <router-view />
     <footer-component />
   </div>
 </template>
@@ -10,21 +10,19 @@
 import NavBar from "@/components/NavBar.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
 
-  export default {
-    name: "app",
-    created() {
-      this.$store.dispatch("setTheme");
-    },
-    components: {
-      NavBar,
-      FooterComponent
-    }
+export default {
+  name: "app",
+  created() {
+    this.$store.dispatch("setTheme");
+  },
+  components: {
+    NavBar,
+    FooterComponent
   }
+};
 </script>
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,400;1,700&family=Open+Sans:wght@400;600;700&display=swap");
 @import "./scss/main.scss";
-
-
 </style>

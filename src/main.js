@@ -6,7 +6,14 @@ import router from "./router.js";
 import "bootstrap";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faPlay, faPause, faTrash, faHeart, faEye, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlay,
+  faPause,
+  faTrash,
+  faHeart,
+  faEye,
+  faCheckCircle
+} from "@fortawesome/free-solid-svg-icons";
 library.add(faPlay, faPause, faTrash, faHeart, faEye, faCheckCircle);
 
 // import VueSidebarMenu from 'vue-sidebar-menu';

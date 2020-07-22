@@ -3,30 +3,32 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
-
 export default new Vuex.Store({
   state: {
     songs: [],
     theme: "light",
     currentSong: null,
     artists: [],
-    currentArtist: JSON.parse(localStorage.getItem('current-artist')) || [],
+    currentArtist: JSON.parse(localStorage.getItem("current-artist")) || [],
     albums: []
   },
   mutations: {
     CHANGE_THEME(state, payload) {
-      state.theme=payload;
+      state.theme = payload;
     },
     SET_SONGS(state, payload) {
       state.songs = payload;
-      state.currentArtist=payload[0];
+      state.currentArtist = payload[0];
     },
     CHANGE_CURRENT_SONG(state, payload) {
       state.currentSong = payload;
     },
     SET_CURRENT_ARTIST(state, payload) {
       state.currentArtist = state.artists[payload];
-      localStorage.setItem("current-artist", JSON.stringify(state.artists[payload]));
+      localStorage.setItem(
+        "current-artist",
+        JSON.stringify(state.artists[payload])
+      );
     },
     SET_ARTISTS(state, payload) {
       state.artists = payload;
@@ -53,7 +55,7 @@ export default new Vuex.Store({
       } else {
         commit("CHANGE_THEME", "dark");
       }
-      this.dispatch("setTheme")
+      this.dispatch("setTheme");
     },
     setCurrentArtist({ commit }, payload) {
       commit("SET_CURRENT_ARTIST", payload);
@@ -63,7 +65,7 @@ export default new Vuex.Store({
         const response = await fetch("https://orangevalleycaa.org/api/music");
         const data = await response.json();
         commit("SET_SONGS", data);
-      } catch(err) {
+      } catch (err) {
         console.log(err);
       }
     },
@@ -73,7 +75,9 @@ export default new Vuex.Store({
     deleteSong({ commit }, payload) {
       // const updatedArray = _.without(this.songs, payload);
       // this.songs = updatedArray;
-      let filteredArray = this.state.songs.filter(song => song.id !== payload.id);
+      let filteredArray = this.state.songs.filter(
+        song => song.id !== payload.id
+      );
       commit("SET_SONGS", filteredArray);
     },
     // fetchArtists({ commit }) {
@@ -95,16 +99,18 @@ export default new Vuex.Store({
       const response = await fetch("./data.json");
       const data = await response.json();
       commit("SET_ARTISTS", data);
-      commit("SET_CURRENT_ARTIST", 0 );
+      commit("SET_CURRENT_ARTIST", 0);
     },
     async fetchAlbums({ commit }) {
-      const artistName = this.state.currentArtist.strArtist
-      const response = await fetch(`https://www.theaudiodb.com/api/v1/json/1/searchalbum.php?s=${artistName}`);
+      const artistName = this.state.currentArtist.strArtist;
+      const response = await fetch(
+        `https://www.theaudiodb.com/api/v1/json/1/searchalbum.php?s=${artistName}`
+      );
       const data = await response.json();
-      const filteredAlbums = data.album.filter(album => album.strAlbumThumb !== null && album.strAlbumThumb !== "")
+      const filteredAlbums = data.album.filter(
+        album => album.strAlbumThumb !== null && album.strAlbumThumb !== ""
+      );
       commit("SET_ALBUMS", filteredAlbums);
     }
   }
 });
-
-

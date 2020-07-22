@@ -12,51 +12,50 @@ import Albums from "./views/Albums.vue";
 //Components
 import Cards from "./components/Cards.vue";
 
-
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
+    path: "/",
     name: "home",
     component: Home
   },
   {
-    path: '/music',
+    path: "/music",
     name: "music",
     component: Music
   },
   {
-    path: '/my-artists',
+    path: "/my-artists",
     name: "myArtists",
     component: MyArtists
   },
   {
-    path: '/artist',
+    path: "/artist",
     name: "artist",
     component: Artist,
     children: [
       {
-      path: "albums",
-      components: {
-        details: Albums
-      }
+        path: "albums",
+        components: {
+          details: Albums
+        }
       },
       {
         path: "bio",
         components: {
           details: Bio
-        },
+        }
       },
       {
         path: "return",
         components: {
           details: Cards
-        },
+        }
       }
-    ],
+    ]
   }
-]
+];
 
 const router = new VueRouter({
   mode: "history",
@@ -64,4 +63,4 @@ const router = new VueRouter({
   routes
 });
 
-export default router
+export default router;

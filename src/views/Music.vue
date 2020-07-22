@@ -21,8 +21,8 @@ export default {
   name: "music",
   data() {
     return {
-      audioElement: null,
-    }
+      audioElement: null
+    };
   },
   computed: {
     ...mapState(["songs", "currentSong"])
@@ -34,13 +34,11 @@ export default {
         this.audioElement.play();
       } else {
         if (payload === this.currentSong) {
-
           if (this.audioElement.paused) {
             this.audioElement.play();
           } else {
             this.audioElement.pause();
           }
-
         } else {
           this.audioElement.src = payload.music_url;
           this.audioElement.play();
@@ -48,7 +46,7 @@ export default {
       }
       this.$store.dispatch("changeSong", payload);
 
-      this.audioElement.addEventListener("ended",()=> {
+      this.audioElement.addEventListener("ended", () => {
         this.$store.dispatch("changeSong", null);
         this.audioElement = null;
       });
@@ -63,10 +61,8 @@ export default {
   components: {
     CurrentSong,
     SongList
-  },
+  }
 };
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

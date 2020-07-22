@@ -3,24 +3,27 @@
     <h2 class="display-4 p-3">Famous Albums</h2>
     <seperator />
     <div v-for="(album, i) in albums" :key="i" class="py-4 px-3 mb-3 album">
-      <div class="row onMobile" :class="{'flex-row-reverse': i % 2==1}">
+      <div class="row onMobile" :class="{ 'flex-row-reverse': i % 2 == 1 }">
         <div class="col-auto">
           <img style="width: 200px" :src="album.strAlbumThumb" alt />
         </div>
-        <div class="col-9 d-flex flex-column" :class="{'align-items-end': i % 2==1}">
-          <p class="h3">{{album.strAlbum}}</p>
+        <div
+          class="col-9 d-flex flex-column"
+          :class="{ 'align-items-end': i % 2 == 1 }"
+        >
+          <p class="h3">{{ album.strAlbum }}</p>
           <div class="d-flex flex-wrap justify-content-even">
             <span class="text-lighter mr-5">
               <font-awesome-icon class="text-primary" icon="check-circle" />
-              Realeased on: {{album.intYearReleased}}
+              Realeased on: {{ album.intYearReleased }}
             </span>
             <span class="text-lighter mr-5">
               <font-awesome-icon class="text-primary" icon="check-circle" />
-              Gerne: {{album.strGenre}}
+              Gerne: {{ album.strGenre }}
             </span>
             <span class="text-lighter">
               <font-awesome-icon class="text-primary" icon="check-circle" />
-              Mood: {{album.strMood}}
+              Mood: {{ album.strMood }}
             </span>
           </div>
         </div>

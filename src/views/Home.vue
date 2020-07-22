@@ -1,9 +1,7 @@
 <template>
   <section id="home">
     <banner />
-    <gallery
-    :artists="artists" 
-    />
+    <gallery :artists="artists" />
   </section>
 </template>
 
@@ -33,7 +31,6 @@ export default {
   background: $gray;
 }
 .light #home {
-  background:  $white;
+  background: $white;
 }
-
 </style>

@@ -28,8 +28,8 @@ export default {
   name: "banner",
   components: {
     FontAwesomeIcon,
-    Cards,
-  },
+    Cards
+  }
 };
 </script>
 
