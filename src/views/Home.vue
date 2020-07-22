@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section id="home">
     <banner />
     <gallery
     :artists="artists" 
@@ -28,5 +28,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/main.scss";
+.dark #home {
+  background: $gray;
+}
+.light #home {
+  background:  $white;
+}
 
 </style>

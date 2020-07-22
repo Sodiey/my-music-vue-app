@@ -39,10 +39,10 @@
                   href="#layout-carousel"
                   data-slide="prev"
                 >
-                  <span class="carousel-control-prev-icon"></span>
+                  <span class="carousel-control-prev-icon p-3 b-primary"></span>
                 </a>
                 <a class="carousel-control-next" href="#layout-carousel" data-slide="next">
-                  <span class="carousel-control-next-icon" v-on:click="nextImage"></span>
+                  <span class="carousel-control-next-icon p-3" v-on:click="nextImage"></span>
                 </a>
               </div>
             </section>
@@ -102,16 +102,16 @@ export default {
 }
 .card {
   @include themify() {
-    background: getThemifyVariable("main-body-bg");
-    color: getThemifyVariable("main-body-text");
+    background: getThemifyVariable("main-body-text");
+    color: getThemifyVariable("main-body-bg");
   }
 }
 
 .dark .layout-outer {
-  background: linear-gradient(160deg, $white 80%, $gray 10%);
+  background: linear-gradient(160deg, $gray 80%, $white 10%);
 }
 .light .layout-outer {
-  background: linear-gradient(160deg, $gray 80%, $white 10%);
+  background: linear-gradient(160deg, $white 80%, $gray 10%);
 }
 
 </style>

@@ -7,10 +7,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     songs: [],
-    theme: "dark",
+    theme: "light",
     currentSong: null,
-    currentArtist: [],
-    artists: []
+    artists: [],
+    currentArtist: JSON.parse(localStorage.getItem('current-artist')) || [],
+    albums: []
   },
   mutations: {
     CHANGE_THEME(state, payload) {
@@ -25,10 +26,13 @@ export default new Vuex.Store({
     },
     SET_CURRENT_ARTIST(state, payload) {
       state.currentArtist = state.artists[payload];
-      console.log(this.state.currentArtist)
+      localStorage.setItem("current-artist", JSON.stringify(state.artists[payload]));
     },
     SET_ARTISTS(state, payload) {
       state.artists = payload;
+    },
+    SET_ALBUMS(state, payload) {
+      state.albums = payload;
     }
   },
   actions: {
@@ -92,6 +96,13 @@ export default new Vuex.Store({
       const data = await response.json();
       commit("SET_ARTISTS", data);
       commit("SET_CURRENT_ARTIST", 0 );
+    },
+    async fetchAlbums({ commit }) {
+      const artistName = this.state.currentArtist.strArtist
+      const response = await fetch(`https://www.theaudiodb.com/api/v1/json/1/searchalbum.php?s=${artistName}`);
+      const data = await response.json();
+      const filteredAlbums = data.album.filter(album => album.strAlbumThumb !== null && album.strAlbumThumb !== "")
+      commit("SET_ALBUMS", filteredAlbums);
     }
   }
 });

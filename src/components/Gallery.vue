@@ -16,12 +16,12 @@
               <img class="img-fluid img-logo mb-4" :src="artist.strArtistLogo" />
             </div>
               <p class="lead my-2">{{reduceString(artist.strBiographyEN)}}...</p>
-              <button 
+              <router-link class="btn btn-block btn-primary mt-4" to="/artist/bio">
+               <span
                 v-on:click="setCurrentArtist(i)"
-               class="btn btn-block btn-primary mt-4"
-               >
-               <router-link class=" btn text-light" to="/artist">Learn More</router-link>
-               </button>
+                class="w-100 py-2 d-block"
+               >Learn More</span>
+              </router-link>
           </div>
         </div>
       </div>
@@ -48,6 +48,7 @@
       },
       setCurrentArtist: function (payload) {
          this.$store.dispatch("setCurrentArtist", payload);
+          console.log("set current artist", payload)
       }
     }
   }
