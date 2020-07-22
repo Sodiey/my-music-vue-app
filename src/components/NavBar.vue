@@ -27,7 +27,7 @@
                   Music
                 </router-link>
               </li>
-              <li class="nav-item">
+              <li class="nav-item mr-md-4">
                 <router-link to="/my-artists" class="nav-link">
                   Artists
                 </router-link>
