@@ -49,7 +49,7 @@
             <section class="card-body">
               <h4 class="card-title">{{currentArtist && currentArtist.strArtist}}</h4>
               <p class="card-text">{{currentArtist.strBiographyEN && reduceString(currentArtist.strBiographyEN)}}...</p>
-              <router-link class="btn btn-primary mt-4" to="/artist/bio">
+              <router-link class="btn btn-primary " to="/artist/bio">
                <span
                 v-on:click="setCurrentArtist(this.i)"
                 class="w-100 d-block"

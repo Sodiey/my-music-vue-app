@@ -10,7 +10,6 @@ import { faPlay, faPause, faTrash, faHeart, faEye, faCheckCircle } from "@fortaw
 library.add(faPlay, faPause, faTrash, faHeart, faEye, faCheckCircle);
 
 // import VueSidebarMenu from 'vue-sidebar-menu';
-// import 'vue-sidebar-menu/dist/vue-sidebar-menu.css';
 // Vue.use(VueSidebarMenu);
 
 Vue.config.productionTip = false;

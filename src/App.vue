@@ -2,11 +2,13 @@
   <div id="app">
     <nav-bar />
     <router-view/>
+    <footer-component />
   </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import FooterComponent from "@/components/FooterComponent.vue";
 
   export default {
     name: "app",
@@ -15,6 +17,7 @@ import NavBar from "@/components/NavBar.vue";
     },
     components: {
       NavBar,
+      FooterComponent
     }
   }
 </script>
