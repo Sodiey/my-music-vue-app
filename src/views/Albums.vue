@@ -1,14 +1,17 @@
 <template>
-  <div id="albums">
+  <section id="albums">
     <h2 class="display-4 p-3">Famous Albums</h2>
     <seperator />
-      <div v-for="(album, i) in albums" :key="i" class="py-4 px-3 mb-3 album">
-    <transition :name="i % 2 == 1 ? 'right-slide' : 'left-slide'">
+    <div v-for="(album, i) in albums" :key="i" class="py-4 px-3 mb-3 album">
+      <transition :name="i % 2 == 1 ? 'right-slide' : 'left-slide'">
         <div class="row onMobile" :class="{ 'flex-row-reverse': i % 2 == 1 }" v-if="show">
           <div class="col-auto mb-3">
             <img style="width: 200px" :src="album.strAlbumThumb" alt="album photo" />
           </div>
-          <div class="col-12 col-lg-9 d-flex flex-column" :class="{ 'align-items-md-end': i % 2 == 1 }">
+          <div
+            class="col-12 col-lg-9 d-flex flex-column"
+            :class="{ 'align-items-md-end': i % 2 == 1 }"
+          >
             <h3 id="album-title">{{ album.strAlbum }}</h3>
             <div class="d-flex flex-wrap justify-content-even">
               <span class="text-lighter mr-5">
@@ -27,9 +30,9 @@
             <dummy-text :description="album.strDescriptionEN" />
           </div>
         </div>
-    </transition>
-      </div>
-  </div>
+      </transition>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -43,10 +46,10 @@ export default {
   data() {
     return {
       show: false
-    }
+    };
   },
   mounted() {
-    this.show = true
+    this.show = true;
   },
   computed: {
     ...mapState(["albums"])
@@ -80,5 +83,4 @@ export default {
     align-self: center;
   }
 }
-
 </style>

@@ -11,7 +11,7 @@ export default new Vuex.Store({
     artists: [],
     currentArtist: JSON.parse(localStorage.getItem("current.artist")) || [],
     albums: [],
-    photos: []
+    photos: [],
   },
   mutations: {
     CHANGE_THEME(state, payload) {
@@ -25,7 +25,7 @@ export default new Vuex.Store({
       state.currentSong = payload;
     },
     SET_CURRENT_ARTIST(state, payload) {
-      if (payload < 0 || payload > state.artists.length) return
+      if (payload < 0 || payload > state.artists.length) return;
       state.currentArtist = state.artists[payload];
       localStorage.setItem(
         "current.artist",
@@ -40,7 +40,7 @@ export default new Vuex.Store({
     },
     SET_PHOTOS(state, payload) {
       state.photos = payload;
-    }
+    },
   },
   actions: {
     setTheme() {
@@ -78,34 +78,43 @@ export default new Vuex.Store({
       commit("CHANGE_CURRENT_SONG", payload);
     },
     deleteSong({ commit }, payload) {
-      // const updatedArray = _.without(this.songs, payload);
-      // this.songs = updatedArray;
       let filteredArray = this.state.songs.filter(
-        song => song.id !== payload.id
+        (song) => song.id !== payload.id
       );
       commit("SET_SONGS", filteredArray);
     },
-    // fetchArtists({ commit }) {
-    //   const myArtists = ["Miles Davis","John coltrane","Herbie Hancock","Ella Fitzgerald"];
-    //   let newArtists = [];
+    fetchArtists({ commit }) {
+      const myArtists = [
+        "Miles Davis",
+        "John coltrane",
+        "Ella Fitzgerald",
+        "Buddy Rich",
+        "Herbie Hancock",
+        "Chet Baker",
+        "Bill Evans",
+        "Dave Brubeck",
+        "Chick Corea",
+        "George Benson",
+      ];
+      let newArtists = [];
 
-    //   myArtists.map(async (artist) => {
-    //     const url = `https://www.theaudiodb.com/api/v1/json/1/search.php?s=${artist}`
-    //     const response = await fetch(url);
-    //     const data = await response.json();
-    //     commit("SET_CURRENT_IMAGE", 0 );
-    //     newArtists.push(data.artists[0]);
-    //   })
+      myArtists.map(async (artist) => {
+        const url = `https://www.theaudiodb.com/api/v1/json/1/search.php?s=${artist}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        commit("SET_CURRENT_ARTIST", 0); // Problem HERE
+        newArtists.push(data.artists[0]);
+      });
 
-    //   console.log(newArtists)
-    //   commit("SET_ARTISTS", newArtists);
-    // },
-    async fetchArtists({ commit }) {
-      const response = await fetch("./data.json");
-      const data = await response.json();
-      commit("SET_ARTISTS", data);
-      commit("SET_CURRENT_ARTIST", 0);
+      console.log(newArtists);
+      commit("SET_ARTISTS", newArtists);
     },
+    // async fetchArtists({ commit }) {
+    //   const response = await fetch("./data.json");
+    //   const data = await response.json();
+    //   commit("SET_ARTISTS", data);
+    //   commit("SET_CURRENT_ARTIST", 0);
+    // },
     async fetchAlbums({ commit }) {
       const artistName = this.state.currentArtist.strArtist;
       const response = await fetch(
@@ -113,19 +122,19 @@ export default new Vuex.Store({
       );
       const data = await response.json();
       const filteredAlbums = data.album.filter(
-        album => album.strAlbumThumb !== null && album.strAlbumThumb !== ""
+        (album) => album.strAlbumThumb !== null && album.strAlbumThumb !== ""
       );
       commit("SET_ALBUMS", filteredAlbums);
     },
     async fetchPhotos({ commit }) {
-      const gerne = "jazz"
-      const client_id = "zEYMWpRquMsjd2nqaA3zIUFr2n1vq2NWM2z1CEAFxP8"
+      const gerne = "jazz";
+      const client_id = "zEYMWpRquMsjd2nqaA3zIUFr2n1vq2NWM2z1CEAFxP8";
       const numOfImages = 15;
       const response = await fetch(
         `https://api.unsplash.com/search/photos?per_page=${numOfImages}&query=${gerne}&client_id=${client_id}`
       );
       const data = await response.json();
       commit("SET_PHOTOS", data.results);
-    }
-  }
+    },
+  },
 });

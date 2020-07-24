@@ -1,5 +1,5 @@
 <template>
-  <div id="gallery" class="layout-outer">
+  <section id="gallery" class="layout-outer">
     <div class="layout-inner">
       <div class="container-fluid">
         <div class="row">
@@ -8,33 +8,19 @@
           </div>
         </div>
         <div class="row justify-content-center artist-outer">
-          <div
-            class="auto col-md-6 col-lg-4 artist"
-            v-for="(artist, i) in artists"
-            :key="i"
-          >
+          <div class="auto col-md-6 col-lg-4 artist" v-for="(artist, i) in artists" :key="i">
             <div class="img-wrapper">
-              <img
-                class="img-fluid img-logo mb-4"
-                :src="artist.strArtistLogo"
-              />
+              <img class="img-fluid img-logo mb-4" :src="artist.strArtistLogo" />
             </div>
-            <p class="lead my-2">
-              {{ reduceString(artist.strBiographyEN) }}...
-            </p>
-            <router-link
-              class="btn btn-block btn-primary mt-4"
-              to="/artist/bio"
-            >
-              <span v-on:click="setCurrentArtist(i)" class="w-100 py-2 d-block"
-                >Learn More</span
-              >
+            <p class="lead my-2">{{ reduceString(artist.strBiographyEN) }}...</p>
+            <router-link class="btn btn-block btn-primary mt-4" to="/artist/bio">
+              <span v-on:click="setCurrentArtist(i)" class="w-100 py-2 d-block">Learn More</span>
             </router-link>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

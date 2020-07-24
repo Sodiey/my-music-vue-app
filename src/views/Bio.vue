@@ -1,9 +1,6 @@
 <template>
-  <div id="bio">
-    <div
-      class="banner-image"
-      :style="{ backgroundImage: `url(${getBackground})` }"
-    />
+  <section id="bio">
+    <div class="banner-image" :style="{ backgroundImage: `url(${getBackground})` }" />
 
     <h1 class="title">{{ currentArtist.strArtist }}</h1>
     <span class="lead">
@@ -11,7 +8,7 @@
     </span>
     <seperator />
     <p class="lead decription">{{ currentArtist.strBiographyEN }}</p>
-  </div>
+  </section>
 </template>
 
 <script>

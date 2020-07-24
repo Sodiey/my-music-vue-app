@@ -19,17 +19,17 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: Home
+    component: Home,
   },
   {
     path: "/music",
     name: "music",
-    component: Music
+    component: Music,
   },
   {
     path: "/my-artists",
     name: "myArtists",
-    component: MyArtists
+    component: MyArtists,
   },
   {
     path: "/artist",
@@ -39,35 +39,34 @@ const routes = [
       {
         path: "albums",
         components: {
-          details: Albums
-        }
+          details: Albums,
+        },
       },
       {
         path: "bio",
         components: {
-          details: Bio
-        }
+          details: Bio,
+        },
       },
       {
         path: "return",
         components: {
-          details: Cards
-        }
-      }
-    ]
+          details: Cards,
+        },
+      },
+    ],
   },
   {
     path: "/my-photos",
     name: "myPhotos",
-    component: MyPhotos
-  }
+    component: MyPhotos,
+  },
 ];
-
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;

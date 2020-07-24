@@ -1,5 +1,5 @@
 <template>
-  <div id="artist-details" :class="[{ collapsed: collapsed }]">
+  <section id="artist-details" :class="[{ collapsed: collapsed }]">
     <div class="artist-details">
       <div class="container-sm pt-5">
         <router-view name="details" />
@@ -12,13 +12,9 @@
         @toggle-collapse="onToggleCollapse"
         :width="width"
       />
-      <div
-        v-if="isOnMobile && !collapsed"
-        class="sidebar-overlay"
-        @click="collapsed = true"
-      />
+      <div v-if="isOnMobile && !collapsed" class="sidebar-overlay" @click="collapsed = true" />
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -39,12 +35,12 @@ export default {
         {
           href: { path: "/artist/bio" },
           title: "About",
-          icon: 'fas fa-address-card'
+          icon: "fas fa-address-card"
         },
         {
           href: { path: "/artist/albums" },
           title: "Albums",
-          icon: 'fas fa-compact-disc'
+          icon: "fas fa-compact-disc"
         },
         {
           component: Seperator
@@ -52,7 +48,7 @@ export default {
         {
           href: { path: "/artist/return" },
           title: "Return",
-          icon: 'fas fa-undo-alt'
+          icon: "fas fa-undo-alt"
         }
       ],
       width: this.isOnMobile ? "200px" : "250px",

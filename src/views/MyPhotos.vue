@@ -1,18 +1,14 @@
 <template>
-<div>
-  <div id="photos" class="photos" ref="gallery">
-      <div class="photo-item" 
-        v-for="(photo, i) in photos" 
-        @click="onToggle"
-        :key="i"
-        >
+  <section>
+    <div id="photos" class="photos" ref="gallery">
+      <div class="photo-item" v-for="(photo, i) in photos" @click="onToggle" :key="i">
         <div class="content">
           <img :src="photo.urls.regular" :class="{'byebye': isLoading}" v-on:load="onLoad" />
         </div>
       </div>
-  </div>
-  <footer-component />
-  </div>
+    </div>
+    <footer-component />
+  </section>
 </template>
 
 <script>
@@ -23,8 +19,8 @@ export default {
   name: "myPhotos",
   data() {
     return {
-      isLoading: false,
-    }
+      isLoading: false
+    };
   },
   components: {
     FooterComponent
@@ -33,39 +29,40 @@ export default {
     this.$store.dispatch("fetchPhotos");
   },
   mounted() {
-    window.addEventListener('resize', this.resizeAll);
+    window.addEventListener("resize", this.resizeAll);
   },
   computed: {
-    ...mapState(["photos", "photosWraperNode"]),
-
+    ...mapState(["photos", "photosWraperNode"])
   },
   methods: {
     getVal(elem, style) {
       return parseInt(window.getComputedStyle(elem).getPropertyValue(style));
     },
     getHeight(item) {
-      return item.querySelector('.content').getBoundingClientRect().height;
+      return item.querySelector(".content").getBoundingClientRect().height;
     },
     onLoad(e) {
-     this.isLoading = true;
-      const altura = this.getVal(this.$refs.gallery, 'grid-auto-rows');
-      const gap = this.getVal(this.$refs.gallery, 'grid-row-gap');
+      this.isLoading = true;
+      const altura = this.getVal(this.$refs.gallery, "grid-auto-rows");
+      const gap = this.getVal(this.$refs.gallery, "grid-row-gap");
       const gitem = e.target.parentElement.parentElement;
-      gitem.style.gridRowEnd = "span " + Math.ceil((this.getHeight(gitem) + gap) / (altura + gap));
+      gitem.style.gridRowEnd =
+        "span " + Math.ceil((this.getHeight(gitem) + gap) / (altura + gap));
       this.isLoading = false;
     },
     onToggle(e) {
-       e.target.parentElement.parentElement.classList.toggle('full');
-       if(this.$refs.gallery.classList[1]){
-         this.$refs.gallery.classList.remove('full');
-       }
+      e.target.parentElement.parentElement.classList.toggle("full");
+      if (this.$refs.gallery.classList[1]) {
+        this.$refs.gallery.classList.remove("full");
+      }
     },
     resizeAll() {
-      const altura = this.getVal(this.$refs.gallery, 'grid-auto-rows');
-      const gap = this.getVal(this.$refs.gallery, 'grid-row-gap');
-      this.$refs.gallery.querySelectorAll('.photo-item').forEach( item => {
-        item.style.gridRowEnd = "span " + Math.ceil((this.getHeight(item) + gap) / (altura + gap));
-    });
+      const altura = this.getVal(this.$refs.gallery, "grid-auto-rows");
+      const gap = this.getVal(this.$refs.gallery, "grid-row-gap");
+      this.$refs.gallery.querySelectorAll(".photo-item").forEach(item => {
+        item.style.gridRowEnd =
+          "span " + Math.ceil((this.getHeight(item) + gap) / (altura + gap));
+      });
     }
   }
 };
@@ -90,7 +87,7 @@ export default {
   z-index: 1;
 }
 .full .content {
-  background-color: rgba(0,0,0,0.75) !important;
+  background-color: rgba(0, 0, 0, 0.75) !important;
   height: 100%;
   width: 100%;
   display: grid;
@@ -115,14 +112,14 @@ export default {
   grid-row-gap: 8px;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-auto-rows: 8px;
-  margin-bottom : 5em;
+  margin-bottom: 5em;
 }
 .photos img {
   max-width: 100%;
   border-radius: 8px;
   box-shadow: 0 0 16px #333;
   @include onHover;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 .photos img:hover {
   /* box-shadow: 0 0 32px #333; */
@@ -144,7 +141,7 @@ export default {
     grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
   }
 }
-@include mediaSm  {
+@include mediaSm {
   .photos {
     grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
   }

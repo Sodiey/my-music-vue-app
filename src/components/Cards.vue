@@ -6,11 +6,7 @@
           <div class="col-10 col-md-4 mb-3">
             <div class="card card1 mr-3">
               <div class="icon-wrapper d-flex justify-content-center mt-5 mb-4">
-                <img
-                  class="img-fluid mt-5"
-                  style="width: 130px"
-                  src="@/assets/piano.svg"
-                />
+                <img class="img-fluid mt-5" style="width: 130px" src="@/assets/piano.svg" />
               </div>
               <div class="card-body text-center">
                 <h5 class="card-title mb-3">My Artists</h5>
@@ -27,11 +23,7 @@
           <div class="col-10 col-md-4 mb-3">
             <div class="card card2 mr-3">
               <div class="icon-wrapper d-flex justify-content-center mt-5 mb-4">
-                <img
-                  class="img-fluid mt-5"
-                  style="width: 130px"
-                  src="@/assets/jukebox.svg"
-                />
+                <img class="img-fluid mt-5" style="width: 130px" src="@/assets/jukebox.svg" />
               </div>
               <div class="card-body text-center">
                 <h5 class="card-title">My Music</h5>
@@ -48,11 +40,7 @@
           <div class="col-10 col-md-4 mb-3">
             <div class="card card3 mr-3">
               <div class="icon-wrapper d-flex justify-content-center mt-5 mb-4">
-                <img
-                  class="img-fluid mt-5"
-                  style="width: 130px"
-                  src="@/assets/book.svg"
-                />
+                <img class="img-fluid mt-5" style="width: 130px" src="@/assets/book.svg" />
               </div>
               <div class="card-body text-center">
                 <h5 class="card-title mb-3">My Photos</h5>

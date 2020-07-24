@@ -1,9 +1,6 @@
 <template>
   <header class="site-header">
-    <nav
-      class="site-nav navbar navbar-expand-md fixed-top text-uppercase"
-      :class="setColorsHeader"
-    >
+    <nav class="site-nav navbar navbar-expand-md fixed-top text-uppercase" :class="setColorsHeader">
       <div class="container-fluid">
         <a class="navbar-brand">ARTSY</a>
         <button
@@ -19,28 +16,20 @@
         <section id="myTogglerNav" class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto text-right">
             <li class="nav-item">
-              <router-link to="/" class="nav-link">
-                Home
-              </router-link>
+              <router-link to="/" class="nav-link">Home</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/music" class="nav-link">
-                Music
-              </router-link>
+              <router-link to="/music" class="nav-link">Music</router-link>
             </li>
             <li class="nav-item mr-md-4">
-              <router-link to="/my-artists" class="nav-link">
-                Artists
-              </router-link>
+              <router-link to="/my-artists" class="nav-link">Artists</router-link>
             </li>
             <li class="nav-item">
               <button
                 class="btn btn-small"
                 v-on:click="changeTheme"
                 :class="setColorsButton"
-              >
-                {{ theme == "dark" ? "light" : "dark" }} mode
-              </button>
+              >{{ theme == "dark" ? "light" : "dark" }} mode</button>
             </li>
           </ul>
         </section>
@@ -58,7 +47,7 @@
             </div>
           </div>
         </div>
-      </section> -->
+    </section>-->
   </header>
 </template>
 

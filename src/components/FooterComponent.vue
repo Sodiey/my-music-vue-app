@@ -1,5 +1,5 @@
 <template>
-  <div id="footer">
+  <section id="footer">
     <div class="row">
       <div class="text-center col-12 col-sm-4 footer" style="background-color: #D3853D">
         <router-link to="/my-artists" class="nav-link">
@@ -17,7 +17,7 @@
         </router-link>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -40,6 +40,6 @@ export default {
     transform: scale(1.1);
   }
 
-  transition: transform .3s ease;
+  transition: transform 0.3s ease;
 }
 </style>

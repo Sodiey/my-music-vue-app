@@ -1,14 +1,13 @@
 //My variables
-$white:      #fff;
-$black:      #000;
-$gray:       #24292e;
-$gray-dark:  #444;
-$gray-400:   #ced4da;
-$gray-500:   #adb5bd;
-$gray-600:   #929292;
-$gray-700:   #495057;
-$red:        #b50300;
-
+$white:         #fff;
+$black:         #000;
+$gray:          #24292e;
+$gray-dark:     #444;
+$gray-400:      #ced4da;
+$gray-500:      #adb5bd;
+$gray-600:      #929292;
+$gray-700:      #495057;
+$red:           #b50300;
 
 //overrides
 $primary: #00adb5;
@@ -31,8 +30,7 @@ $line-height-base: 1.4;
 $list-group-border-radius: 0;
 $list-group-bg: transparent;
 $list-group-active-bg: darken($primary, 10);
-$list-group-hover-bg: rgba(darken($primary, 10), .5);
-
+$list-group-hover-bg: rgba(darken($primary, 10), 0.5);
 
 //MIXINS
 @mixin easeOut {
@@ -40,47 +38,39 @@ $list-group-hover-bg: rgba(darken($primary, 10), .5);
 }
 @mixin onHover {
   &:hover {
-    box-shadow: 0px 5px 6px -3px rgba(0,0,0,0.2),0px 9px 12px 1px rgba(0,0,0,0.14),0px 3px 16px 2px rgba(0,0,0,0.12);
+    box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.2),
+      0px 9px 12px 1px rgba(0, 0, 0, 0.14), 0px 3px 16px 2px rgba(0, 0, 0, 0.12);
   }
-  transition: all .1s ease-out;
+  transition: all 0.1s ease-out;
 }
-
 
 // Theming
 $themes: (
   light: (
     //HOME
-    main-body-bg: $gray-400,
+      main-body-bg: $gray-400,
     main-body-text: $black,
-
-    
     nav-bg: $gray,
-    btn-bg:  lighten($gray, 80),
+    btn-bg: lighten($gray, 80),
     btn-color: $gray,
-    
     //MUSIC
-    song-list-bg:lighten($gray, 80),
+      song-list-bg: lighten($gray, 80),
     song-list-text: darken($gray-400, 80),
     song-list-sub-text: darken($gray-500, 40),
-    
   ),
   dark: (
     //HOME
-    main-body-bg: $gray,
+      main-body-bg: $gray,
     main-body-text: $white,
-
     nav-bg: lighten($gray, 80),
-    
     btn-bg: $gray,
     btn-color: lighten($gray, 80),
-    
     //MUSIC
-    song-list-bg: $gray,
-    song-list-text: $gray-400, 
+      song-list-bg: $gray,
+    song-list-text: $gray-400,
     song-list-sub-text: $gray-500,
-  ), 
+  ),
 );
-
 
 @function map-fetch($map, $keys) {
   $key: nth($keys, 1);
@@ -148,7 +138,6 @@ $themes: (
     @content;
   }
 }
-
 
 @mixin mediaLg {
   @media screen and (min-width: 769px) and (max-width: 1170px) {

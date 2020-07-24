@@ -1,12 +1,12 @@
 <template>
-  <article id="page-carousel" class="layout-outer py-5">
+  <section id="page-carousel" class="layout-outer py-5">
     <div class="container">
       <div class="row justify-content-center">
-        <div class=" col-10 col-md-6">
+        <div class="col-10 col-md-6">
           <div class="card shadow-lg">
-            <section class="card-header font-weight-bold">
-              {{ currentArtist && currentArtist.strArtist }}
-            </section>
+            <section
+              class="card-header font-weight-bold"
+            >{{ currentArtist && currentArtist.strArtist }}</section>
             <section
               id="layout-carousel"
               class="layout-carousel carousel slide"
@@ -14,11 +14,7 @@
             >
               <div class="img-wraper carousel-inner">
                 <ol class="carousel-indicators">
-                  <li
-                    data-target="#layout-carousel"
-                    data-slide-to="0"
-                    active
-                  ></li>
+                  <li data-target="#layout-carousel" data-slide-to="0" active></li>
                   <li data-target="#layout-carousel" data-slide-to="1"></li>
                   <li data-target="#layout-carousel" data-slide-to="2"></li>
                   <li data-target="#layout-carousel" data-slide-to="3"></li>
@@ -29,8 +25,7 @@
                   <li data-target="#layout-carousel" data-slide-to="8"></li>
                   <li data-target="#layout-carousel" data-slide-to="9"></li>
                   <li data-target="#layout-carousel" data-slide-to="10"></li>
-                </ol>
-                //LOOP
+                </ol>//LOOP
                 <section
                   class="carousel-item"
                   v-for="(artist, i) in artists"
@@ -42,52 +37,36 @@
                     :src="artist.strArtistThumb"
                     :alt="artist.strArtist"
                   />
-                </section>
-                //LOOP ENDS
+                </section>//LOOP ENDS
                 <a
                   class="carousel-control-prev"
                   href="#layout-carousel"
                   data-slide="prev"
                 >
-                  <span 
-                    class="carousel-control-prev-icon p-3 b-primary"
-                  ></span>
+                  <span class="carousel-control-prev-icon p-3 b-primary"></span>
                 </a>
-                <a
-                  class="carousel-control-next"
-                  href="#layout-carousel"
-                  data-slide="next"
-                >
-                  <span
-                    class="carousel-control-next-icon p-3"
-                    v-on:click="nextImage"
-                  ></span>
+                <a class="carousel-control-next" href="#layout-carousel" data-slide="next">
+                  <span class="carousel-control-next-icon p-3" v-on:click="nextImage"></span>
                 </a>
               </div>
             </section>
             <section class="card-body">
-              <h4 class="card-title">
-                {{ currentArtist && currentArtist.strArtist }}
-              </h4>
+              <h4 class="card-title">{{ currentArtist && currentArtist.strArtist }}</h4>
               <p class="card-text">
                 {{
-                  currentArtist.strBiographyEN &&
-                    reduceString(currentArtist.strBiographyEN)
+                currentArtist.strBiographyEN &&
+                reduceString(currentArtist.strBiographyEN)
                 }}...
               </p>
-              <router-link class="btn btn-primary " to="/artist/bio">
-                <span
-                  v-on:click="setCurrentArtist(this.i)"
-                  class="w-100 d-block"
-                  >Learn More</span
-                >
+              <router-link class="btn btn-primary" to="/artist/bio">
+                <span v-on:click="setCurrentArtist(this.i)" class="w-100 d-block">Learn More</span>
               </router-link>
             </section>
           </div>
         </div>
       </div>
     </div>
-  </article>
+  </section>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div id="music">
+  <section id="music">
     <transition name="fade">
       <current-song :song="currentSong" v-if="currentSong" />
     </transition>
@@ -9,7 +9,7 @@
       @handlePlay="handlePlay"
       @handleDelete="handleDelete"
     />
-  </div>
+  </section>
 </template>
 
 <script>

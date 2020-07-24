@@ -1,13 +1,11 @@
 <template>
-  <div class="currentsong sticky-top">
+  <section class="currentsong sticky-top">
     <div class="currentsong-background position-relative">
       <div
         class="currentsong-backgroundimage position-absolute"
         :style="{ backgroundImage: `url(${song.image})` }"
       ></div>
-      <div
-        class="song-info d-flex justify-content-center align-items-center py-5"
-      >
+      <div class="song-info d-flex justify-content-center align-items-center py-5">
         <div class="item container py-4">
           <div class="row justify-content-center">
             <div class="song col-md-8 text-center">
@@ -20,7 +18,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
