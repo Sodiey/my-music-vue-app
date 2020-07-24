@@ -1,4 +1,5 @@
 <template>
+<div>
   <div id="photos" class="photos" ref="gallery">
       <div class="photo-item" 
         v-for="(photo, i) in photos" 
@@ -10,9 +11,13 @@
         </div>
       </div>
   </div>
+  <footer-component />
+  </div>
 </template>
 
 <script>
+import FooterComponent from "@/components/FooterComponent.vue";
+
 import { mapState } from "vuex";
 export default {
   name: "myPhotos",
@@ -20,6 +25,9 @@ export default {
     return {
       isLoading: false,
     }
+  },
+  components: {
+    FooterComponent
   },
   created() {
     this.$store.dispatch("fetchPhotos");
@@ -107,6 +115,7 @@ export default {
   grid-row-gap: 8px;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-auto-rows: 8px;
+  margin-bottom : 5em;
 }
 .photos img {
   max-width: 100%;

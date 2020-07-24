@@ -2,13 +2,12 @@
   <div id="app">
     <nav-bar />
     <router-view />
-    <footer-component />
   </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-import FooterComponent from "@/components/FooterComponent.vue";
+
 
 export default {
   name: "app",
@@ -16,8 +15,7 @@ export default {
     this.$store.dispatch("setTheme");
   },
   components: {
-    NavBar,
-    FooterComponent
+    NavBar
   }
 };
 </script>

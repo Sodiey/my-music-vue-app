@@ -2,6 +2,7 @@
   <section id="home">
     <banner />
     <gallery :artists="artists" />
+    <footer-component />
   </section>
 </template>
 
@@ -9,6 +10,7 @@
 import { mapState } from "vuex";
 import Banner from "@/components/Banner";
 import Gallery from "@/components/Gallery";
+import FooterComponent from "@/components/FooterComponent.vue";
 
 export default {
   name: "home",
@@ -20,7 +22,8 @@ export default {
   },
   components: {
     Banner,
-    Gallery
+    Gallery,
+    FooterComponent
   }
 };
 </script>
