@@ -1,6 +1,6 @@
 <template>
   <div>
-    fdsfdsfds
+    <!-- fdsfdsfds -->
   </div>
 </template>
 

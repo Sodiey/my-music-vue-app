@@ -5,6 +5,7 @@ import VueRouter from "vue-router";
 import Home from "./views/Home.vue";
 import Music from "./views/Music.vue";
 import MyArtists from "./views/MyArtists.vue";
+import MyPhotos from "./views/MyPhotos.vue";
 import Artist from "./views/Artist.vue";
 import Bio from "./views/Bio.vue";
 import Albums from "./views/Albums.vue";
@@ -54,8 +55,14 @@ const routes = [
         }
       }
     ]
+  },
+  {
+    path: "/my-photos",
+    name: "myPhotos",
+    component: MyPhotos
   }
 ];
+
 
 const router = new VueRouter({
   mode: "history",

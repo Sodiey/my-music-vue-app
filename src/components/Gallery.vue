@@ -1,5 +1,5 @@
 <template>
-  <div style="min-height: 100vh" class="layout-outer">
+  <div id="gallery" class="layout-outer">
     <div class="layout-inner">
       <div class="container-fluid">
         <div class="row">
@@ -56,7 +56,6 @@ export default {
     },
     setCurrentArtist: function(payload) {
       this.$store.dispatch("setCurrentArtist", payload);
-      console.log("set current artist", payload);
     }
   }
 };

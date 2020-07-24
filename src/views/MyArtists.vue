@@ -49,7 +49,9 @@
                   href="#layout-carousel"
                   data-slide="prev"
                 >
-                  <span class="carousel-control-prev-icon p-3 b-primary"></span>
+                  <span 
+                    class="carousel-control-prev-icon p-3 b-primary"
+                  ></span>
                 </a>
                 <a
                   class="carousel-control-next"
@@ -113,6 +115,14 @@ export default {
         this.i = 1;
       }
     },
+    // previousImage() {
+    //   if (this.i < this.artists.length) {
+    //     this.$store.dispatch("setCurrentArtist", this.i--);
+    //   } else {
+    //     this.$store.dispatch("setCurrentArtist", 0);
+    //     this.i = 1;
+    //   }
+    // },
     reduceString: function(str) {
       let newStr = [];
       let i;

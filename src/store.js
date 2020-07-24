@@ -6,11 +6,12 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     songs: [],
-    theme: "light",
+    theme: "dark",
     currentSong: null,
     artists: [],
-    currentArtist: JSON.parse(localStorage.getItem("current-artist")) || [],
-    albums: []
+    currentArtist: JSON.parse(localStorage.getItem("current.artist")) || [],
+    albums: [],
+    photos: []
   },
   mutations: {
     CHANGE_THEME(state, payload) {
@@ -24,9 +25,10 @@ export default new Vuex.Store({
       state.currentSong = payload;
     },
     SET_CURRENT_ARTIST(state, payload) {
+      if (payload < 0 || payload > state.artists.length) return
       state.currentArtist = state.artists[payload];
       localStorage.setItem(
-        "current-artist",
+        "current.artist",
         JSON.stringify(state.artists[payload])
       );
     },
@@ -35,6 +37,9 @@ export default new Vuex.Store({
     },
     SET_ALBUMS(state, payload) {
       state.albums = payload;
+    },
+    SET_PHOTOS(state, payload) {
+      state.photos = payload;
     }
   },
   actions: {
@@ -111,6 +116,16 @@ export default new Vuex.Store({
         album => album.strAlbumThumb !== null && album.strAlbumThumb !== ""
       );
       commit("SET_ALBUMS", filteredAlbums);
+    },
+    async fetchPhotos({ commit }) {
+      const gerne = "jazz"
+      const client_id = "zEYMWpRquMsjd2nqaA3zIUFr2n1vq2NWM2z1CEAFxP8"
+      const numOfImages = 15;
+      const response = await fetch(
+        `https://api.unsplash.com/search/photos?per_page=${numOfImages}&query=${gerne}&client_id=${client_id}`
+      );
+      const data = await response.json();
+      commit("SET_PHOTOS", data.results);
     }
   }
 });

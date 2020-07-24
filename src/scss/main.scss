@@ -1,22 +1,44 @@
 @import "_config";
-@import "node_modules/bootstrap/scss/bootstrap";
-$primary-color: $primary;
-$item-active-color: $primary;
-@import "node_modules/vue-sidebar-menu/src/scss/vue-sidebar-menu.scss";
+// @import "node_modules/bootstrap/scss/bootstrap";
+// $primary-color: $primary;
+// $item-active-color: $primary;
+// @import "node_modules/vue-sidebar-menu/src/scss/vue-sidebar-menu.scss";
 @import "_music";
 
 
 
 //transition
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 1s;
+
+.right-slide-enter,
+.right-slide-leave-to {
+  transform: translateX(100vw);
 }
 
-.fade-enter,
-.fade-leave-to {
+.left-slide-enter,
+.left-slide-leave-to {
+  transform: translateX(-100vw);
+}
+
+
+.right-slide-enter-active,
+.right-slide-leave-active,
+.left-slide-enter-active,
+.left-slide-leave-active {
+  transition: transform 1s;
+}
+
+
+
+
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 6s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
+
+
 
 .dark,
 .light {

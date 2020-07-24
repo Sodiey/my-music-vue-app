@@ -60,9 +60,9 @@
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>
-                <button class="btn btn-dark">
-                  <font-awesome-icon class="play mr-2" icon="eye" />Check
-                </button>
+                <router-link to="/my-photos" class="btn btn-dark">
+                  <font-awesome-icon class="play mr-2" icon="play" />Play
+                </router-link>
               </div>
             </div>
           </div>

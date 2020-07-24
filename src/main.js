@@ -5,6 +5,7 @@ import store from "./store.js";
 import router from "./router.js";
 import "bootstrap";
 
+
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faPlay,
@@ -18,6 +19,7 @@ library.add(faPlay, faPause, faTrash, faHeart, faEye, faCheckCircle);
 
 // import VueSidebarMenu from 'vue-sidebar-menu';
 // Vue.use(VueSidebarMenu);
+
 
 Vue.config.productionTip = false;
 

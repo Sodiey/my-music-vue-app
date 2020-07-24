@@ -9,7 +9,9 @@
                 I
                 <font-awesome-icon class="heart text-primary" icon="heart" />ART
               </h3>
+              <a href="#gallery">
               <button id="btn-banner" class="btn btn-primary py-2">VIEW</button>
+              </a>
             </div>
           </div>
         </div>

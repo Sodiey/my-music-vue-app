@@ -25,7 +25,6 @@
 import { mapState } from "vuex";
 import { SidebarMenu } from "vue-sidebar-menu";
 import Seperator from "../components/Seperator";
-// import "vue-sidebar-menu/dist/vue-sidebar-menu.css";
 
 export default {
   name: "artist",
@@ -39,18 +38,21 @@ export default {
         },
         {
           href: { path: "/artist/bio" },
-          title: "About"
+          title: "About",
+          icon: 'fas fa-address-card'
         },
         {
           href: { path: "/artist/albums" },
-          title: "Albums"
+          title: "Albums",
+          icon: 'fas fa-compact-disc'
         },
         {
           component: Seperator
         },
         {
           href: { path: "/artist/return" },
-          title: "Return"
+          title: "Return",
+          icon: 'fas fa-undo-alt'
         }
       ],
       width: this.isOnMobile ? "200px" : "250px",
@@ -91,10 +93,10 @@ export default {
 
 <style lang="scss">
 @import "@/scss/main.scss";
+$primary-color: $primary;
+$item-active-color: $primary;
+@import "node_modules/vue-sidebar-menu/src/scss/vue-sidebar-menu.scss";
 
-.v-sidebar-menu .vsm--link {
-  min-height: 50px;
-}
 .v-sidebar-menu .vsm--header {
   margin-bottom: 20px;
 }
