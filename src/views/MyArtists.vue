@@ -1,10 +1,12 @@
 <template>
-  <article id="page-carousel" class="layout-outer py-5">
+  <section id="page-carousel" class="layout-outer py-5">
     <div class="container">
       <div class="row justify-content-center">
-        <div class=" col-10 col-md-6">
+        <div class="col-10 col-md-6">
           <div class="card shadow-lg">
-            <section class="card-header font-weight-bold">{{currentArtist && currentArtist.strArtist}}</section>
+            <section
+              class="card-header font-weight-bold"
+            >{{ currentArtist && currentArtist.strArtist }}</section>
             <section
               id="layout-carousel"
               class="layout-carousel carousel slide"
@@ -27,34 +29,44 @@
                 <section
                   class="carousel-item"
                   v-for="(artist, i) in artists"
-                  :class="{'active': (i === 0) }"
+                  :class="{ active: i === 0 }"
                   :key="i"
                 >
-                  <img class="layout-img img-fluid d-block w-100"
-                  :src="artist.strArtistThumb" 
-                  :alt="artist.strArtist" />
+                  <img
+                    class="layout-img img-fluid d-block w-100"
+                    :src="artist.strArtistThumb"
+                    :alt="artist.strArtist"
+                  />
                 </section>//LOOP ENDS
                 <a
                   class="carousel-control-prev"
                   href="#layout-carousel"
                   data-slide="prev"
                 >
-                  <span class="carousel-control-prev-icon"></span>
+                  <span class="carousel-control-prev-icon p-3 b-primary"></span>
                 </a>
                 <a class="carousel-control-next" href="#layout-carousel" data-slide="next">
-                  <span class="carousel-control-next-icon" v-on:click="nextImage"></span>
+                  <span class="carousel-control-next-icon p-3" v-on:click="nextImage"></span>
                 </a>
               </div>
             </section>
             <section class="card-body">
-              <h4 class="card-title">{{currentArtist && currentArtist.strArtist}}</h4>
-              <p class="card-text">{{currentArtist.strBiographyEN && reduceString(currentArtist.strBiographyEN)}}...</p>
+              <h4 class="card-title">{{ currentArtist && currentArtist.strArtist }}</h4>
+              <p class="card-text">
+                {{
+                currentArtist &&
+                reduceString(currentArtist.strBiographyEN)
+                }}...
+              </p>
+              <router-link class="btn btn-primary" to="/artist/bio">
+                <span v-on:click="getCurrentArtist" class="w-100 d-block">Learn More</span>
+              </router-link>
             </section>
           </div>
         </div>
       </div>
     </div>
-  </article>
+  </section>
 </template>
 
 <script>
@@ -71,9 +83,14 @@ export default {
     ...mapState(["artists", "currentArtist"])
   },
   created() {
-    this.$store.dispatch("fetchArtists");
+    if (this.artists.length === 0) {
+      this.$store.dispatch("fetchArtists");
+    }
   },
   methods: {
+    getCurrentArtist() {
+      this.$store.dispatch("setCurrentArtist", this.i - 1);
+    },
     nextImage() {
       if (this.i < this.artists.length) {
         this.$store.dispatch("setCurrentArtist", this.i++);
@@ -82,13 +99,21 @@ export default {
         this.i = 1;
       }
     },
+    // previousImage() {
+    //   if (this.i < this.artists.length) {
+    //     this.$store.dispatch("setCurrentArtist", this.i--);
+    //   } else {
+    //     this.$store.dispatch("setCurrentArtist", 0);
+    //     this.i = 1;
+    //   }
+    // },
     reduceString: function(str) {
-        let newStr = [];
-        let i;
-        for( i=0; i < str.length; i++) {
-          newStr.push(str[i]);
-            if (str[i] == '.') break;
-        }
+      let newStr = [];
+      let i;
+      for (i = 0; i < str.length; i++) {
+        newStr.push(str[i]);
+        if (str[i] == ".") break;
+      }
       return newStr.join("");
     }
   }
@@ -102,16 +127,15 @@ export default {
 }
 .card {
   @include themify() {
-    background: getThemifyVariable("main-body-bg");
-    color: getThemifyVariable("main-body-text");
+    background: getThemifyVariable("main-body-text");
+    color: getThemifyVariable("main-body-bg");
   }
 }
 
 .dark .layout-outer {
-  background: linear-gradient(160deg, $white 80%, $gray 10%);
-}
-.light .layout-outer {
   background: linear-gradient(160deg, $gray 80%, $white 10%);
 }
-
+.light .layout-outer {
+  background: linear-gradient(160deg, $white 80%, $gray 10%);
+}
 </style>

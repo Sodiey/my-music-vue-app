@@ -9,7 +9,9 @@
                 I
                 <font-awesome-icon class="heart text-primary" icon="heart" />ART
               </h3>
-              <button id="btn-banner" class="btn btn-primary py-2">VIEW</button>
+              <a href="#gallery">
+                <button id="btn-banner" class="btn btn-primary py-2">VIEW</button>
+              </a>
             </div>
           </div>
         </div>
@@ -28,8 +30,8 @@ export default {
   name: "banner",
   components: {
     FontAwesomeIcon,
-    Cards,
-  },
+    Cards
+  }
 };
 </script>
 
