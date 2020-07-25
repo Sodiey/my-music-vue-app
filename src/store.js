@@ -19,7 +19,6 @@ export default new Vuex.Store({
     },
     SET_SONGS(state, payload) {
       state.songs = payload;
-      state.currentArtist = payload[0];
     },
     CHANGE_CURRENT_SONG(state, payload) {
       state.currentSong = payload;
@@ -78,7 +77,7 @@ export default new Vuex.Store({
       commit("CHANGE_CURRENT_SONG", payload);
     },
     deleteSong({ commit }, payload) {
-      let filteredArray = this.state.songs.filter(
+      const filteredArray = this.state.songs.filter(
         (song) => song.id !== payload.id
       );
       commit("SET_SONGS", filteredArray);
@@ -105,10 +104,9 @@ export default new Vuex.Store({
         commit("SET_CURRENT_ARTIST", 0); // Problem HERE
         newArtists.push(data.artists[0]);
       });
-
-      console.log(newArtists);
       commit("SET_ARTISTS", newArtists);
     },
+    // IN CASE THE API BREAKS. ARTISTS DATA SAVED IN data.json file
     // async fetchArtists({ commit }) {
     //   const response = await fetch("./data.json");
     //   const data = await response.json();

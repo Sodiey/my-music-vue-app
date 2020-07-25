@@ -58,11 +58,14 @@ export default {
   created() {
     this.$store.dispatch("fetchSongs");
   },
+  beforeDestroy() {
+    if (this.currentSong) {
+      this.audioElement.pause();
+    }
+  },
   components: {
     CurrentSong,
     SongList
   }
 };
 </script>
-
-<style lang="scss"></style>

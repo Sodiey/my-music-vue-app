@@ -28,4 +28,34 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+@import "@/scss/main.scss";
+
+.currentsong-background {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.currentsong-backgroundimage {
+  height: 100%;
+  width: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(8px) grayscale(50%);
+  transform: scale(1.15);
+}
+.currentsong .song-info {
+  background: #000;
+}
+
+.currentsong .song-name {
+  font-size: 2.5em;
+}
+.currentsong .song-description {
+  font-size: 0.9em;
+  line-height: 120%;
+}
+
+
+</style>

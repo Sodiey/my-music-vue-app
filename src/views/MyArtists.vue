@@ -54,12 +54,12 @@
               <h4 class="card-title">{{ currentArtist && currentArtist.strArtist }}</h4>
               <p class="card-text">
                 {{
-                currentArtist.strBiographyEN &&
+                currentArtist &&
                 reduceString(currentArtist.strBiographyEN)
                 }}...
               </p>
               <router-link class="btn btn-primary" to="/artist/bio">
-                <span v-on:click="setCurrentArtist(this.i)" class="w-100 d-block">Learn More</span>
+                <span v-on:click="getCurrentArtist" class="w-100 d-block">Learn More</span>
               </router-link>
             </section>
           </div>
@@ -83,9 +83,14 @@ export default {
     ...mapState(["artists", "currentArtist"])
   },
   created() {
-    this.$store.dispatch("fetchArtists");
+    if (this.artists.length === 0) {
+      this.$store.dispatch("fetchArtists");
+    }
   },
   methods: {
+    getCurrentArtist() {
+      this.$store.dispatch("setCurrentArtist", this.i - 1);
+    },
     nextImage() {
       if (this.i < this.artists.length) {
         this.$store.dispatch("setCurrentArtist", this.i++);

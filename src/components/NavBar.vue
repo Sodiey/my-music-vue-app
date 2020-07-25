@@ -2,7 +2,9 @@
   <header class="site-header">
     <nav class="site-nav navbar navbar-expand-md fixed-top text-uppercase" :class="setColorsHeader">
       <div class="container-fluid">
-        <a class="navbar-brand">ARTSY</a>
+        <router-link to="/" class="navbar-brand">
+          ARTSY
+        </router-link>
         <button
           type="button"
           class="navbar-toggler"
@@ -13,18 +15,18 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <section id="myTogglerNav" class="collapse navbar-collapse">
+        <section id="myTogglerNav" class="collapse navbar-collapse" ref="nav">
           <ul class="navbar-nav ml-auto text-right">
-            <li class="nav-item">
+            <li class="nav-item" v-on:click="hideNav">
               <router-link to="/" class="nav-link">Home</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-on:click="hideNav">
               <router-link to="/music" class="nav-link">Music</router-link>
             </li>
-            <li class="nav-item mr-md-4">
+            <li class="nav-item mr-md-4" v-on:click="hideNav">
               <router-link to="/my-artists" class="nav-link">Artists</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-on:click="hideNav">
               <button
                 class="btn btn-small"
                 v-on:click="changeTheme"
@@ -35,19 +37,6 @@
         </section>
       </div>
     </nav>
-
-    <!-- <section
-        class="layout-hero d-flex align-items-center text-center"
-        v-if="currentSong == null"
-      >
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-11 col-sm-10 col-md-8">
-              <h3>ARTSY</h3>
-            </div>
-          </div>
-        </div>
-    </section>-->
   </header>
 </template>
 
@@ -59,6 +48,9 @@ export default {
   methods: {
     changeTheme() {
       this.$store.dispatch("changeTheme");
+    },
+    hideNav() {
+      this.$refs.nav.classList.remove("show");
     }
   },
   mounted() {

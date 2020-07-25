@@ -3,7 +3,6 @@
 // $primary-color: $primary;
 // $item-active-color: $primary;
 // @import "node_modules/vue-sidebar-menu/src/scss/vue-sidebar-menu.scss";
-@import "_music";
 
 //transition
 
@@ -26,7 +25,7 @@
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 6s;
+  transition: opacity 7s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
