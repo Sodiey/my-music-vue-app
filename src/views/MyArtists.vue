@@ -43,7 +43,7 @@
                   href="#layout-carousel"
                   data-slide="prev"
                 >
-                  <span class="carousel-control-prev-icon p-3 b-primary"></span>
+                  <span class="carousel-control-prev-icon p-3 b-primary" v-on:click="previousImage"></span>
                 </a>
                 <a class="carousel-control-next" href="#layout-carousel" data-slide="next">
                   <span class="carousel-control-next-icon p-3" v-on:click="nextImage"></span>
@@ -76,7 +76,7 @@ export default {
   name: "my-artists",
   data() {
     return {
-      i: 1
+      i: 0
     };
   },
   computed: {
@@ -89,24 +89,26 @@ export default {
   },
   methods: {
     getCurrentArtist() {
-      this.$store.dispatch("setCurrentArtist", this.i - 1);
+      this.$store.dispatch("setCurrentArtist", this.i);
     },
     nextImage() {
-      if (this.i < this.artists.length) {
-        this.$store.dispatch("setCurrentArtist", this.i++);
+      if (this.i < this.artists.length - 1) {
+        this.i++
+        this.$store.dispatch("setCurrentArtist", this.i);
       } else {
         this.$store.dispatch("setCurrentArtist", 0);
-        this.i = 1;
+        this.i = 0;
       }
     },
-    // previousImage() {
-    //   if (this.i < this.artists.length) {
-    //     this.$store.dispatch("setCurrentArtist", this.i--);
-    //   } else {
-    //     this.$store.dispatch("setCurrentArtist", 0);
-    //     this.i = 1;
-    //   }
-    // },
+    previousImage() {
+      if (this.i <= this.artists.length - 1 && this.i > 0) {
+        this.i--;
+        this.$store.dispatch("setCurrentArtist", this.i);
+      } else {
+        this.$store.dispatch("setCurrentArtist", this.artists.length - 1);
+        this.i = this.artists.length -1;
+      }
+    },
     reduceString: function(str) {
       let newStr = [];
       let i;
